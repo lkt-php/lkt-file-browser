@@ -39,6 +39,7 @@ class LKtFileEntities20250414175300 extends AbstractMigration
 
             ->addColumn('type', 'string', ['limit' => 10])
             ->addColumn('src', 'string', ['limit' => 250])
+            ->addColumn('name', 'json')
 
             ->addColumn('config', 'text', ['null' => true, 'default' => null])
             ->addColumn('children', 'text', ['null' => true, 'default' => null])

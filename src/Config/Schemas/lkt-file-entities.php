@@ -23,13 +23,19 @@ return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
     ->setCountableField('id')
     ->setFieldsForRelatedMode('id', 'component', [
         'id',
-        'component',
         'type',
-        'props',
         'config',
-        'layout',
+        'src',
+        'name',
+        'nameData',
         'children',
     ])
+//    ->setExcludedFieldsForViewFeed('create', [
+//        'name',
+//    ])
+//    ->setExcludedFieldsForViewFeed('update', [
+//        'name',
+//    ])
     ->addField(IdField::define('id'))
     ->addField(
         DateTimeField::define('createdAt', 'created_at')
@@ -47,4 +53,6 @@ return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
     ->addField(
         ForeignKeysField::defineRelation(LktFileEntity::COMPONENT, 'children')
     )
+    ->addField(StringField::define('name')->setIsI18nJson())
+    ->addField(AssocJSONField::define('nameData', 'name')->setIsI18nJson())
     ;
