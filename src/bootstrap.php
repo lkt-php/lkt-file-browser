@@ -1,6 +1,6 @@
 <?php
 
-namespace Lkt\WebPages;
+namespace Lkt\FileBrowser;
 
 use Lkt\Factory\Schemas\Schema;
 use Lkt\Phinx\PhinxConfigurator;

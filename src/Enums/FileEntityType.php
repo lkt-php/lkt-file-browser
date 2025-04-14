@@ -1,6 +1,6 @@
 <?php
 
-namespace Lkt\WebPages\Enums;
+namespace Lkt\FileBrowser\Enums;
 
 class FileEntityType
 {

@@ -1,6 +1,6 @@
 {
-  "name": "lkt/web-pages",
-  "description": "LKT PHP Web Pages",
+  "name": "lkt/file-browser",
+  "description": "LKT PHP File Browser",
   "type": "library",
   "version": "1.0.0",
   "require": {
@@ -19,8 +19,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Lkt\\WebPages\\": "src",
-      "Lkt\\WebPages\\Tests\\": "tests"
+      "Lkt\\FileBrowser\\": "src",
+      "Lkt\\FileBrowser\\Tests\\": "tests"
     },
     "files": [
       "src/bootstrap.php"

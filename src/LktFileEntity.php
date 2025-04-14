@@ -1,9 +1,9 @@
 <?php
 
-namespace Lkt\WebPages;
+namespace Lkt\FileBrowser;
 
 use Lkt\Factory\Schemas\Schema;
-use Lkt\WebPages\Generated\GeneratedLktFileEntity;
+use Lkt\FileBrowser\Generated\GeneratedLktFileEntity;
 
 class LktFileEntity extends GeneratedLktFileEntity
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lkt\WebPages\Config\Schemas;
+namespace Lkt\FileBrowser\Config\Schemas;
 
 use Lkt\Factory\Schemas\Fields\AssocJSONField;
 use Lkt\Factory\Schemas\Fields\DateTimeField;
@@ -10,13 +10,13 @@ use Lkt\Factory\Schemas\Fields\StringChoiceField;
 use Lkt\Factory\Schemas\Fields\StringField;
 use Lkt\Factory\Schemas\InstanceSettings;
 use Lkt\Factory\Schemas\Schema;
-use Lkt\WebPages\Enums\FileEntityType;
-use Lkt\WebPages\LktFileEntity;
+use Lkt\FileBrowser\Enums\FileEntityType;
+use Lkt\FileBrowser\LktFileEntity;
 
 return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
     ->setInstanceSettings(
         InstanceSettings::define(LktFileEntity::class)
-            ->setNamespaceForGeneratedClass('Lkt\WebPages\Generated')
+            ->setNamespaceForGeneratedClass('Lkt\FileBrowser\Generated')
             ->setWhereStoreGeneratedClass(__DIR__ . '/../../Generated')
     )
     ->setItemsPerPage(20)
