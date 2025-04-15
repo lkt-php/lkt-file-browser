@@ -4,6 +4,8 @@ namespace Lkt\FileBrowser;
 
 use Lkt\Factory\Schemas\Schema;
 use Lkt\FileBrowser\Generated\GeneratedLktFileEntity;
+use Lkt\Http\Response;
+use Lkt\MIME;
 
 class LktFileEntity extends GeneratedLktFileEntity
 {
@@ -28,6 +30,20 @@ class LktFileEntity extends GeneratedLktFileEntity
     {
         LktFileEntity::feedInstance($this, $data, 'update');
         return $this->save();
+    }
+
+    public function getSrcResponse(): Response
+    {
+        $path = static::getSchemaStorePath($this);
+        if (!$path) return Response::notFound();
+
+        $fileName = $this->getSrcName();
+        if (!$fileName) return Response::notFound();
+
+        $file = $this->getSrc();
+        $content = file_get_contents($file->path);
+        return Response::ok($content)
+            ->setContentTypeMIME(MIME::getByExtension(pathinfo($fileName, PATHINFO_EXTENSION)));
     }
 
 
