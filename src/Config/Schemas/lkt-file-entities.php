@@ -52,6 +52,7 @@ return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
     ->addField(
         FileField::define('src')
         ->setStorePath([LktFileEntity::class, 'getSchemaStorePath'])
+        ->setPublicPath([LktFileEntity::class, 'getSchemaPublicPath'])
     )
     ->addField(AssocJSONField::define('config'))
     ->addField(

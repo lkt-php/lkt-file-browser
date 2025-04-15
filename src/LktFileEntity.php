@@ -10,6 +10,7 @@ class LktFileEntity extends GeneratedLktFileEntity
     const COMPONENT = 'lkt-file-entity';
 
     public static $schemaStorePath = null;
+    public static $schemaPublicPath = null;
 
     public function read()
     {
@@ -34,6 +35,19 @@ class LktFileEntity extends GeneratedLktFileEntity
     {
         if (is_callable(static::$schemaStorePath)) {
             return call_user_func(static::$schemaStorePath, $instance);
+        }
+        return '';
+    }
+
+
+    public static function getSchemaPublicPath(LktFileEntity|null $instance = null): string
+    {
+        if ($instance instanceof LktFileEntity) {
+            if ($instance->typeIsUnit() || $instance->typeIsDir()) return '';
+        }
+
+        if (is_callable(static::$schemaPublicPath)) {
+            return call_user_func(static::$schemaPublicPath, $instance);
         }
         return '';
     }
