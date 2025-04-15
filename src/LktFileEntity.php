@@ -23,7 +23,14 @@ class LktFileEntity extends GeneratedLktFileEntity
     public function doCreate(array $data): static
     {
         LktFileEntity::feedInstance($this, $data, 'create');
-        return $this->save();
+        $this->save();
+
+        if ($data['parent']) {
+            $parent = static::getInstance($data['parent']);
+            $parent->setChildren([...$parent->getChildrenIds(), $this->getId()])->save();
+        }
+
+        return $this;
     }
 
     public function doUpdate(array $data): static
