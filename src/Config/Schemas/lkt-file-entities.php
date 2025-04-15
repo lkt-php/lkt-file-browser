@@ -4,6 +4,7 @@ namespace Lkt\FileBrowser\Config\Schemas;
 
 use Lkt\Factory\Schemas\Fields\AssocJSONField;
 use Lkt\Factory\Schemas\Fields\DateTimeField;
+use Lkt\Factory\Schemas\Fields\FileField;
 use Lkt\Factory\Schemas\Fields\ForeignKeysField;
 use Lkt\Factory\Schemas\Fields\IdField;
 use Lkt\Factory\Schemas\Fields\StringChoiceField;
@@ -48,7 +49,10 @@ return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
             ->setCurrentTimeStampAsDefaultValue()
     )
     ->addField(StringChoiceField::choice(FileEntityType::Types, 'type'))
-    ->addField(StringField::define('src'))
+    ->addField(
+        FileField::define('src')
+        ->setStorePath([LktFileEntity::class, 'getSchemaStorePath'])
+    )
     ->addField(AssocJSONField::define('config'))
     ->addField(
         ForeignKeysField::defineRelation(LktFileEntity::COMPONENT, 'children')

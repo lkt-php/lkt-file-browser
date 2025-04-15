@@ -9,6 +9,8 @@ class LktFileEntity extends GeneratedLktFileEntity
 {
     const COMPONENT = 'lkt-file-entity';
 
+    public static $schemaStorePath = null;
+
     public function read()
     {
         $fields = Schema::get(static::COMPONENT)->getAllFields();
@@ -25,5 +27,14 @@ class LktFileEntity extends GeneratedLktFileEntity
     {
         LktFileEntity::feedInstance($this, $data, 'update');
         return $this->save();
+    }
+
+
+    public static function getSchemaStorePath($instance): string
+    {
+        if (is_callable(static::$schemaStorePath)) {
+            return call_user_func(static::$schemaStorePath, $instance);
+        }
+        return '';
     }
 }
