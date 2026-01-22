@@ -50,7 +50,9 @@ class LktFileEntity extends GeneratedLktFileEntity
         $file = $this->getSrc();
         $content = file_get_contents($file->path);
         return Response::ok($content)
-            ->setContentTypeMIME(MIME::getByExtension(pathinfo($fileName, PATHINFO_EXTENSION)));
+            ->setContentTypeMIME(MIME::getByExtension(pathinfo($fileName, PATHINFO_EXTENSION)))
+            ->enableCacheToOneYear()
+            ;
     }
 
 

@@ -22,7 +22,9 @@ return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
     )
     ->setItemsPerPage(20)
     ->setCountableField('id')
-    ->setFieldsForRelatedMode('id', 'component', [
+    ->setRelatedAccessPolicy([
+        'id' => 'value',
+        'component' => 'label',
         'id',
         'type',
         'config',
@@ -31,12 +33,6 @@ return Schema::table('lkt_file_entities', LktFileEntity::COMPONENT)
         'nameData',
         'children',
     ])
-//    ->setExcludedFieldsForViewFeed('create', [
-//        'name',
-//    ])
-//    ->setExcludedFieldsForViewFeed('update', [
-//        'name',
-//    ])
     ->addField(IdField::define('id'))
     ->addField(
         DateTimeField::define('createdAt', 'created_at')
